@@ -38,7 +38,6 @@ class AliPayClient {
         this.appId = options.appId;
         this.appPrivateKey = options.appPrivateKey;
         this.appPublicKey = options.appPublicKey;
-        this.appAESKey = options.appAESKey;
         this.aliPayPublicKey = options.aliPayPublicKey;
         
         if(!this.appId){
@@ -51,10 +50,6 @@ class AliPayClient {
         
         if(!this.appPublicKey){
             throw new Error('appPublicKey should not be null');
-        }
-
-        if(!this.appAESKey){
-            throw new Error('appAESKey should not be null');
         }
 
         if(!this.aliPayPublicKey){
@@ -72,7 +67,6 @@ class AliPayClient {
         aliPayRequest._setAppId(this.appId);
         aliPayRequest._setAppPrivateKey(this.appPrivateKey);
         aliPayRequest._setAppPublicKey(this.appPublicKey);
-        aliPayRequest._setAppAesKey(this.appAESKey);
         aliPayRequest._setAliPublicKey(this.aliPayPublicKey);
         
         return aliPayRequest._getRequestUrl()
@@ -89,7 +83,6 @@ class AliPayClient {
         aliPayRequest._setAppId(this.appId);
         aliPayRequest._setAppPrivateKey(this.appPrivateKey);
         aliPayRequest._setAppPublicKey(this.appPublicKey);
-        aliPayRequest._setAppAesKey(this.appAESKey);
         aliPayRequest._setAliPublicKey(this.aliPayPublicKey);
         
         const options = {

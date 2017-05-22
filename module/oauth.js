@@ -25,6 +25,14 @@ class AuthRequest extends AliPayRequest {
                     desc: '换取授权访问令牌'
                 },
             },
+            open: {
+                auth: {
+                    method: 'POST',
+                    name: 'alipay.open.auth.token.app',
+                    summary: '换取应用授权令牌',
+                    desc: '换取应用授权令牌'
+                },
+            },
             user: {
                 info: {
                     method: 'GET',
@@ -99,6 +107,27 @@ class AccessTokenRequest extends AuthRequest {
         this.__form.grant_type = obj.grant_type;
         this.__form.refresh_token = obj.refresh_token;
         this.__form.code = obj.code;
+        return this;
+    }
+}
+
+class OpenAuthTokenAppRequest extends AuthRequest {
+    constructor(){
+        super();
+
+        let interfaces = AuthRequest.interfaces();
+
+        this.__method = interfaces.open.auth.method;
+        this.__form.method = interfaces.open.auth.name;
+    }
+
+    setBizContent(obj){
+        this.__form.biz_content = JSON.stringify(obj);
+        return this;
+    }
+
+    setContent(obj){
+        this.__form.app_auth_token = obj.app_auth_token;
         return this;
     }
 }
