@@ -111,6 +111,10 @@ class AccessTokenRequest extends AuthRequest {
     }
 }
 
+exports.AccessTokenRequest = AccessTokenRequest;
+
+
+//换取应用授权令牌
 class OpenAuthTokenAppRequest extends AuthRequest {
     constructor(){
         super();
@@ -132,7 +136,7 @@ class OpenAuthTokenAppRequest extends AuthRequest {
     }
 }
 
-exports.AccessTokenRequest = AccessTokenRequest;
+exports.OpenAuthTokenAppRequest = OpenAuthTokenAppRequest;
 
 
 

@@ -1,6 +1,6 @@
 {
-  "name": "olipay",
-  "version": "1.0.1",
+  "name": "alipay-open",
+  "version": "0.0.2",
   "description": "alipay open api wrap",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/synder/alipay.git"
+    "url": "git+https://github.com/sunoj/alipay.git"
   },
   "keywords": [
     "alipay"
   ],
-  "author": "synder",
+  "author": "synder & sunoj",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/synder/alipay/issues"
+    "url": "https://github.com/sunoj/alipay/issues"
   },
-  "homepage": "https://github.com/synder/alipay#readme"
+  "homepage": "https://github.com/sunoj/alipay#readme"
 }
