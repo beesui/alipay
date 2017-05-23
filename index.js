@@ -136,9 +136,11 @@ exports.auth = {
 };
 
 exports.trade = {
+    CreatePay : trade.CreatePay,
     WapPayRequest : trade.WapPayRequest,
     PayQueryRequest : trade.PayQueryRequest,
     PayCloseRequest : trade.PayCloseRequest,
     PayRefundRequest : trade.PayRefundRequest,
+    PayCancelRequest : trade.PayCancelRequest,
     RefundQueryRequest : trade.RefundQueryRequest,
 };

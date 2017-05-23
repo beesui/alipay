@@ -13,6 +13,12 @@ class TradeRequest extends AliPayRequest {
             payment: {
                 pay: {
                     method: 'GET',
+                    name: 'alipay.trade.pay',
+                    summary: '统一收单交易支付接口',
+                    desc: '收银员使用扫码设备读取用户手机支付宝“付款码”/声波获取设备（如麦克风）读取用户手机支付宝的声波信息后，将二维码或条码信息/声波信息通过本接口上送至支付宝发起支付。'
+                },
+                wap_pay: {
+                    method: 'GET',
                     name: 'alipay.trade.wap.pay',
                     summary: 'App支付接口',
                     desc: '通过此接口传入订单参数，同时唤起支付宝手机网页支付页面'
@@ -22,6 +28,12 @@ class TradeRequest extends AliPayRequest {
                     name: 'alipay.trade.close',
                     summary: '交易关闭接口',
                     desc: '通过此接口关闭此前已创建的交易，关闭后，用户将无法继续付款。仅能关闭创建后未支付的交易'
+                },
+                cancel: {
+                    method: 'GET',
+                    name: 'alipay.trade.cancel',
+                    summary: '统一收单交易撤销接口',
+                    desc: '支付交易返回失败或支付系统超时，调用该接口撤销交易。如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。'
                 },
                 query: {
                     method: 'GET',
@@ -72,6 +84,11 @@ class TradeRequest extends AliPayRequest {
     setBizContent(obj){
         this.__form.biz_content = JSON.stringify(obj);
     }
+
+    setAppAuthToken(token){
+        this.__form.app_auth_token = token;
+        return this;
+    }
 }
 
 
@@ -83,8 +100,8 @@ class WapPayRequest extends TradeRequest {
         
         let interfaces = TradeRequest.interfaces();
         
-        this.__method = interfaces.payment.pay.method;
-        this.__form.method = interfaces.payment.pay.name;
+        this.__method = interfaces.payment.wap_pay.method;
+        this.__form.method = interfaces.payment.wap_pay.name;
     }
 
     setReturnUrl(url){
@@ -97,8 +114,6 @@ class WapPayRequest extends TradeRequest {
 }
 
 exports.WapPayRequest = WapPayRequest;
-
-
 
 
 //交易关闭接口
@@ -188,7 +203,6 @@ exports.RefundQueryRequest = RefundQueryRequest;
 
 
 
-
 //查询账单下载地址接口
 class BillQueryRequest extends TradeRequest {
     constructor(){
@@ -206,3 +220,39 @@ class BillQueryRequest extends TradeRequest {
 }
 
 exports.BillQueryRequest = BillQueryRequest;
+
+
+// 发起支付
+class CreatePay extends TradeRequest {
+    constructor(){
+        super();
+
+        let interfaces = TradeRequest.interfaces();
+        this.__method = interfaces.payment.pay.method;
+        this.__form.method = interfaces.payment.pay.name;
+    }
+
+    setAppAuthToken(token){
+        this.__form.app_auth_token = token;
+    }
+}
+
+exports.CreatePay = CreatePay;
+
+
+//撤销支付
+class PayCancelRequest extends TradeRequest {
+    constructor(){
+        super();
+
+        let interfaces = TradeRequest.interfaces();
+        this.__method = interfaces.payment.cancel.method;
+        this.__form.method = interfaces.payment.cancel.name;
+    }
+
+    setAppAuthToken(token){
+        this.__form.app_auth_token = token;
+    }
+}
+
+exports.PayCancelRequest = PayCancelRequest;
