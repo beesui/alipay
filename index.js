@@ -74,6 +74,11 @@ class AliPayClient {
         
         return aliPayRequest._getRequestUrl()
     }
+
+    //回调验签
+    verifyNotify(query){
+        return AliPayRequest.rsaVerifyNotify(this.aliPayPublicKey, query)
+    }
     
     //发送请求
     request(aliPayRequest, callback){
