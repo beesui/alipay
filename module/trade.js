@@ -23,6 +23,12 @@ class TradeRequest extends AliPayRequest {
                     summary: 'App支付接口',
                     desc: '通过此接口传入订单参数，同时唤起支付宝手机网页支付页面'
                 },
+                precreate: {
+                    method: 'GET',
+                    name: 'alipay.trade.precreate',
+                    summary: '统一收单线下交易预创建',
+                    desc: '收银员通过收银台或商户后台调用支付宝接口，生成二维码后，展示给用户，由用户扫描二维码完成订单支付。'
+                },
                 close: {
                     method: 'GET',
                     name: 'alipay.trade.close',
@@ -238,6 +244,25 @@ class CreatePay extends TradeRequest {
 }
 
 exports.CreatePay = CreatePay;
+
+// 二维码支付
+class CreatePayQRcode extends TradeRequest {
+    
+    constructor(){
+        super();
+        
+        let interfaces = TradeRequest.interfaces();
+        
+        this.__method = interfaces.payment.precreate.method;
+        this.__form.method = interfaces.payment.precreate.name;
+    }
+
+    setNotifyUrl(url){
+        this.__form.notify_url = url;
+    }
+}
+
+exports.CreatePayQRcode = CreatePayQRcode;
 
 
 //撤销支付
