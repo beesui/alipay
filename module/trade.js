@@ -20,6 +20,12 @@ class TradeRequest extends AliPayRequest {
                 wap_pay: {
                     method: 'GET',
                     name: 'alipay.trade.wap.pay',
+                    summary: 'WAP支付接口',
+                    desc: '通过此接口传入订单参数，同时唤起支付宝手机网页支付页面'
+                },
+                app_pay: {
+                    method: 'GET',
+                    name: 'alipay.trade.app.pay',
                     summary: 'App支付接口',
                     desc: '通过此接口传入订单参数，同时唤起支付宝手机网页支付页面'
                 },
@@ -120,6 +126,26 @@ class WapPayRequest extends TradeRequest {
 }
 
 exports.WapPayRequest = WapPayRequest;
+
+
+// App 支付接口
+class AppPayRequest extends TradeRequest {
+    
+    constructor(){
+        super();
+        
+        let interfaces = TradeRequest.interfaces();
+        
+        this.__method = interfaces.payment.app_pay.method;
+        this.__form.method = interfaces.payment.app_pay.name;
+    }
+
+    setNotifyUrl(url){
+        this.__form.notify_url = url;
+    }
+}
+
+exports.AppPayRequest = AppPayRequest;
 
 
 //交易关闭接口

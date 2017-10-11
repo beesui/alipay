@@ -144,6 +144,7 @@ exports.trade = {
     CreatePay : trade.CreatePay,
     CreatePayQRcode : trade.CreatePayQRcode,
     WapPayRequest : trade.WapPayRequest,
+    AppPayRequest : trade.AppPayRequest,
     PayQueryRequest : trade.PayQueryRequest,
     PayCloseRequest : trade.PayCloseRequest,
     PayRefundRequest : trade.PayRefundRequest,
