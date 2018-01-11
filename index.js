@@ -141,6 +141,7 @@ exports.auth = {
 };
 
 exports.trade = {
+    Create : trade.Create,
     CreatePay : trade.CreatePay,
     CreatePayQRcode : trade.CreatePayQRcode,
     WapPayRequest : trade.WapPayRequest,

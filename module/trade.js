@@ -29,6 +29,12 @@ class TradeRequest extends AliPayRequest {
                     summary: 'App支付接口',
                     desc: '通过此接口传入订单参数，同时唤起支付宝手机网页支付页面'
                 },
+                create: {
+                    method: 'GET',
+                    name: 'alipay.trade.create',
+                    summary: '统一收单交易创建接口',
+                    desc: '商户通过该接口进行交易的创建下单。'
+                },
                 precreate: {
                     method: 'GET',
                     name: 'alipay.trade.precreate',
@@ -253,6 +259,26 @@ class BillQueryRequest extends TradeRequest {
 
 exports.BillQueryRequest = BillQueryRequest;
 
+// 交易创建
+class Create extends TradeRequest {
+    constructor(){
+        super();
+
+        let interfaces = TradeRequest.interfaces();
+        this.__method = interfaces.payment.create.method;
+        this.__form.method = interfaces.payment.create.name;
+    }
+
+    setNotifyUrl(url){
+        this.__form.notify_url = url;
+    }
+
+    setAppAuthToken(token){
+        this.__form.app_auth_token = token;
+    }
+}
+
+exports.Create = Create;
 
 // 发起支付
 class CreatePay extends TradeRequest {

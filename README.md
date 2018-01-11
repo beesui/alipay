@@ -4,7 +4,7 @@
 ##1、创建请求客户端
 ```javascript
 const fs = require('fs');
-const alipay = require('olipay');
+const alipay = require('alipay-open-new');
 const debug = true;
 
 const client = new alipay.AliPayClient({
@@ -29,7 +29,7 @@ const client = new alipay.AliPayClient({
 ##3、发送请求或者执行跳转
 ```javascript
 const fs = require('fs');
-const alipay = require('olipay');
+const alipay = require('alipay-open-new');
 const debug = true;
 
 const client = new alipay.AliPayClient({

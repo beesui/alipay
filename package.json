@@ -1,6 +1,6 @@
 {
-  "name": "alipay-open",
-  "version": "0.0.8",
+  "name": "alipay-open-new",
+  "version": "1.0.0",
   "description": "alipay open api wrap",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sunoj/alipay.git"
+    "url": "git+https://github.com/beesui/alipay.git"
   },
   "keywords": [
     "alipay"
   ],
-  "author": "synder & sunoj",
+  "author": "synder & sunoj & beesui",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sunoj/alipay/issues"
+    "url": "https://github.com/beesui/alipay/issues"
   },
-  "homepage": "https://github.com/sunoj/alipay#readme"
+  "homepage": "https://github.com/beesui/alipay#readme"
 }
